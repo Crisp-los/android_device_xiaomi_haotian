@@ -10,34 +10,23 @@ KERNEL_PATH := $(DEVICE_PATH)-kernel
 # Inherit from sm8750-common
 include device/xiaomi/sm8750-common/BoardConfigCommon.mk
 
-# Sepolicy
-BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
-
 # Display
 TARGET_SCREEN_DENSITY := 600
 
 # Dtb/o
 BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_PATH)/dtbo.img
-# Soong's prebuilt DTB packaging only globs *.dtb from this directory.
 BOARD_PREBUILT_DTBIMAGE_DIR := $(KERNEL_PATH)/dtb
 
-# Kernel
 TARGET_NO_KERNEL_OVERRIDE := true
-
 TARGET_KERNEL_SOURCE := $(KERNEL_PATH)/kernel-headers
-TARGET_PREBUILT_KERNEL_HEADERS := $(KERNEL_PATH)/prebuilt_kernel_headers.tar.gz
-
 PRODUCT_COPY_FILES += \
 	$(KERNEL_PATH)/kernel:kernel
 
 # Kernel modules
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/vendor_ramdisk/modules.load))
-
 BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/vendor_ramdisk/modules.load.recovery))
-
 BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/vendor_dlkm/modules.load))
 
-# Kernel Modules
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(KERNEL_PATH)/vendor_dlkm/,$(TARGET_COPY_OUT_VENDOR_DLKM)/lib/modules) \
     $(filter-out $(KERNEL_PATH)/vendor_ramdisk/modules.load.recovery:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules/modules.load.recovery,$(call find-copy-subdir-files,*,$(KERNEL_PATH)/vendor_ramdisk/,$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules)) \

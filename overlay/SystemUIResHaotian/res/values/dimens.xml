@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2026 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Stock haotian status bar top padding. -->
+    <dimen name="status_bar_padding_top">38.0px</dimen>
+
+    <!-- Stock haotian status bar horizontal padding. -->
+    <dimen name="status_bar_padding_start">4.0px</dimen>
+    <dimen name="status_bar_padding_end">4.0px</dimen>
+
+    <!-- Stock haotian Keyguard status bar header height. -->
+    <dimen name="status_bar_header_height_keyguard">40.0dip</dimen>
+
+    <!-- Stock haotian rounded-corner content padding. -->
+    <dimen name="rounded_corner_content_padding">89.0px</dimen>
+
+    <!-- Stock haotian keyguard indication bottom margin. -->
+    <dimen name="keyguard_indication_margin_bottom">32.0dip</dimen>
+
+</resources>
